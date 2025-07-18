@@ -95,7 +95,7 @@ func (s *appState) roundState() (done bool) {
 		return
 	}
 	s.phase = notify
-	s.timer.Reset(time.Until(time.Now().Add(s.app.restDuration - s.app.notifyDuration)))
+	s.timer.Reset(s.app.restDuration - s.app.notifyDuration)
 	return
 }
 

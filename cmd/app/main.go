@@ -18,6 +18,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer player.Close()
 
 	app, err := app.NewApplication(cfg, player)
 	if err != nil {
