@@ -16,13 +16,15 @@ func main() {
 
 	player, err := p.NewPlayer(cfg.NotifyFile, cfg.DoneFile, cfg.NewRoundFile)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 	defer player.Close()
 
 	app, err := app.NewApplication(cfg, player)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
